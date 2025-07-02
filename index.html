@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodny A. Montano - Personal Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #2C3E50; /* Deep Slate Gray */
+            --secondary-dark: #34495E; /* Slightly lighter Slate Gray */
+            --accent-blue: #007BFF; /* Professional Blue (more vibrant) */
+            --light-bg: #F8F9FA; /* Very Light Gray/Off-white for background (brighter) */
+            --text-color-dark: #212529; /* Darker text for better contrast */
+            --text-color-light: #FFFFFF; /* White text */
+            --border-line: #DEE2E6; /* Light Gray for borders and subtle lines (lighter) */
+            --hover-effect: #0056b3; /* Darker blue for hover states */
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color-dark);
+            background-color: var(--light-bg);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.3s ease; /* Smooth transition for links */
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: var(--hover-effect);
+        }
+
+        h1, h2, h3, h4 { /* Added h4 to styling */
+            font-family: 'Roboto Slab', serif;
+            color: var(--primary-dark);
+            margin-bottom: 0.5em;
+        }
+
+        /* Header Section */
+        .header-section {
+            background-color: var(--primary-dark);
+            color: var(--text-color-light);
+            padding: 40px 0;
+            border-bottom: 4px solid var(--accent-blue); /* Stronger border with accent */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 280px; /* Slightly increased height */
+            box-shadow: 0 4px 10px var(--shadow-medium); /* More pronounced shadow */
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            width: 90%;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .profile-photo-container {
+            border-radius: 50%;
+            width: 200px; /* Slightly smaller for better balance */
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            flex-shrink: 0; /* Prevent shrinking on smaller screens */
+        }
+
+        .profile-photo {
+            width: 100%; /* Fill container completely */
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--text-color-light); /* Thicker border */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Soft inner shadow */
+        }
+
+        .name-tagline-info h1 {
+            color: var(--text-color-light);
+            font-size: 3.2em; /* Slightly adjusted font size */
+            margin-bottom: 0.1em; /* Reduced margin */
+            letter-spacing: 1.5px;
+            font-weight: 700; /* Bolder for impact */
+        }
+
+        .name-tagline-info .tagline {
+            font-size: 1.2em;
+            margin-bottom: 0;
+            color: var(--border-line); /* Soft tagline color */
+            font-weight: 300;
+        }
+
+        /* Main Content and Cards */
+        .main-content {
+            max-width: 960px; /* Increased max-width */
+            margin: 40px auto; /* More vertical margin */
+            padding: 0 25px; /* Increased padding */
+            flex-grow: 1;
+        }
+
+        .overview-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Slightly larger min-width for cards */
+            gap: 25px; /* Increased gap */
+            margin-top: 30px;
+        }
+
+        /* Media query for "by twos" layout */
+        @media (min-width: 600px) {
+            .overview-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .card {
+            background-color: var(--text-color-light);
+            border-radius: 10px; /* More rounded corners */
+            min-height: 160px; /* Slightly taller cards */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6em; /* Slightly larger font */
+            font-weight: 600;
+            color: var(--primary-dark);
+            cursor: pointer;
+            transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out, border-color 0.25s ease-in-out; /* Smooth transitions */
+            box-shadow: 0 5px 15px var(--shadow-light); /* Soft shadow */
+            border: 1px solid var(--border-line);
+        }
+
+        .card:hover {
+            transform: translateY(-8px); /* More pronounced lift effect */
+            box-shadow: 0 10px 25px var(--shadow-medium); /* Stronger shadow on hover */
+            border-color: var(--accent-blue);
+        }
+
+        /* Detailed Sections */
+        .detail-section {
+            background-color: var(--text-color-light);
+            padding: 35px; /* Increased padding */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-light);
+            margin-top: 40px; /* More margin */
+            border: 1px solid var(--border-line);
+        }
+
+        .detail-section h2 {
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 25px; /* More margin */
+            font-size: 2.2em; /* Slightly larger heading */
+            border-bottom: 2px solid var(--border-line); /* Subtle underline */
+            padding-bottom: 10px;
+        }
+
+        .detail-section ul {
+            list-style: none;
+            padding-left: 0; /* Remove default padding for custom bullets */
+            margin-bottom: 20px;
+        }
+
+        .detail-section ul li {
+            margin-bottom: 12px; /* Increased margin */
+            position: relative;
+            padding-left: 25px; /* Space for custom bullet */
+            color: var(--text-color-dark);
+            font-size: 1.05em; /* Slightly larger font */
+        }
+
+        .detail-section ul li::before {
+            content: '→'; /* Changed bullet style to an arrow */
+            color: var(--accent-blue);
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+        .job-entry, .project-container, .education-entry { /* Added education-entry */
+            margin-bottom: 30px; /* Increased margin */
+            padding-bottom: 20px; /* Increased padding */
+            border-bottom: 1px dashed var(--border-line);
+        }
+
+        .job-entry:last-child, .project-container:last-child, .education-entry:last-child {
+            border-bottom: none;
+        }
+
+        .job-entry h3, .project-container h3, .education-entry h4 { /* Corrected education h4 */
+            color: var(--primary-dark);
+            font-size: 1.4em; /* Slightly larger */
+            margin-bottom: 0.3em;
+        }
+
+        .job-entry p, .project-container p, .education-entry p {
+            margin-top: 5px;
+            font-size: 0.98em; /* Slightly adjusted font size */
+            color: var(--secondary-dark);
+        }
+
+        .project-container a {
+            margin-right: 20px; /* Increased margin */
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .back-button {
+            display: block;
+            margin: 30px auto 0; /* More margin */
+            padding: 12px 25px; /* Larger padding */
+            background-color: var(--accent-blue);
+            color: var(--text-color-light);
+            border: none;
+            border-radius: 6px; /* Slightly more rounded */
+            cursor: pointer;
+            font-size: 1.1em; /* Larger font */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+        }
+
+        .back-button:hover {
+            background-color: var(--hover-effect);
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: left;
+                gap: 50px; /* Increased gap */
+            }
+
+            .profile-photo-container {
+                margin-right: 0; /* No margin needed here */
+            }
+
+            .name-tagline-info h1 {
+                font-size: 4em; /* Larger font */
+            }
+
+            .name-tagline-info .tagline {
+                font-size: 1.6em; /* Larger font */
+            }
+        }
+
+        /* Styles for project images */
+        .project-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 18px; /* More margin */
+            border-radius: 8px;
+            box-shadow: 0 3px 8px var(--shadow-light); /* Soft shadow */
+            max-height: 280px; /* Slightly taller max-height */
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.02); /* Slight zoom on hover */
+            box-shadow: 0 5px 12px var(--shadow-medium); /* More pronounced shadow */
+        }
+
+        /* Styles for the modal (lightbox) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.95); /* Darker overlay */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 95%; /* Wider modal */
+            max-width: 1000px; /* Larger max-width */
+            padding: 25px; /* More padding */
+            background-color: var(--text-color-light);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6); /* Stronger shadow */
+        }
+
+        .modal-content {
+            max-width: 100%;
+            max-height: 85vh; /* Taller content */
+            display: block;
+            object-fit: contain;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px; /* Adjusted position */
+            right: 25px;
+            color: var(--primary-dark);
+            font-size: 40px; /* Larger close button */
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--accent-blue); /* Accent color on hover */
+            text-decoration: none;
+        }
+
+        /* Footer Styles */
+        .site-footer {
+            background-color: var(--primary-dark);
+            color: var(--light-bg);
+            text-align: center;
+            padding: 25px 0; /* More padding */
+            margin-top: 50px; /* More margin */
+            border-top: 4px solid var(--accent-blue); /* Stronger border */
+        }
+
+        .site-footer p {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            margin-top: 15px; /* More margin */
+            display: flex;
+            justify-content: center;
+            gap: 25px; /* Increased gap */
+        }
+
+        .social-links a {
+            color: var(--light-bg);
+            font-size: 2.2em; /* Slightly larger icons */
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: inline-flex; /* For better icon centering if needed */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-blue);
+            transform: translateY(-3px); /* Slight lift effect */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-section">
+        <div class="header-content">
+            <div class="profile-photo-container">
+                <img src="Profile.jpg" alt="Rodny A. Montano Profile Picture" class="profile-photo">
+            </div>
+            <div class="name-tagline-info">
+                <h1>RODNY A. MONTANO</h1>
+                <p class="tagline">Future Web Developer | Aspiring Graphic Artist | IT Student</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="overview-cards">
+            <div class="card" id="personal-info-card">
+                <p>About Me</p>
+            </div>
+            <div class="card" id="skills-card">
+                <p>Skills</p>
+            </div>
+            <div class="card" id="experience-card">
+                <p>Job Experience</p>
+            </div>
+            <div class="card" id="projects-card">
+                <p>Projects</p>
+            </div>
+        </section>
+
+        <section id="personal-info-detail" class="detail-section hidden">
+            <h2>About Me & My Background</h2>
+            <p>Hello! I'm Rodny A. Montano, a passionate IT Student from Cavite State University CCAT. With a strong focus on creating intuitive and visually appealing digital experiences, I specialize in digital arts and design. I'm always eager to learn new technologies and improve my craft.</p>
+
+            <div class="contact-info">
+                <h3>Contact Details</h3>
+                <p><strong>Email:</strong> <a href="mailto:rc.rodny.montano@cvsu.edu.ph">rc.rodny.montano@cvsu.edu.ph</a></p>
+                <p><strong>Phone:</strong> <a href="tel:+639611961987">+63 961 196 1987</a></p>
+                <p><strong>Location:</strong> Amaya Tanza, Cavite, Philippines</p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/Rodknyx" target="_blank">https://github.com/Rodknyx</a></p>
+            </div>
+                <br>
+            <div class="education-section">
+                <h3>Educational Background</h3>
+                <div class="education-entry">
+                    <h4>Bachelor of Science in Information Technology</h4>
+                    <p><strong>Cavite State University CCAT</strong> | Rosario, Cavite</p>
+                    <p>Expected Graduation: 2026</p>
+                </div>
+                <br>
+                <div class="education-entry">
+                    <h4>Senior High School - TVL-CSS</h4>
+                    <p><strong>Amaya School of Home Industries</strong> | Tanza, Cavite</p>
+                    <p>Graduated: May 2022</p>
+                    <p><em>Graduated With Honor</em></p>
+                </div>
+                <br>
+                <div class="education-entry">
+                    <h4>Junior High School</h4>
+                    <p><strong>Tanza National Comprehensive High School</strong> | Tanza, Cavite</p>
+                    <p>Graduated: March 2020</p>
+                    <p><em>Graduated With Honor</em></p>
+                </div>
+                <br>
+                <div class="education-entry">
+                    <h4>Elementary School</h4>
+                    <p><strong>Amaya Elementary School</strong> | Tanza, Cavite</p>
+                    <p>Graduated: March 2016</p>
+                </div>
+            </div>
+
+            <button class="back-button">Back to Overview</button>
+        </section>
+
+        <section id="skills-detail" class="detail-section hidden">
+            <h2>My Skills</h2>
+            <ul>
+                <li><strong>Adobe Photoshop:</strong> Photo Editing and Vector Arts.</li>
+                <li><strong>Teamwork:</strong> Collaboration, conflict resolution, team leadership, mentorship.</li>
+                <li><strong>Problem-Solving:</strong> Analytical thinking, critical thinking, creative problem-solving, decision-making.</li>
+                <li><strong>Time Management:</strong> Prioritization, organization, meeting deadlines, efficient workflow.</li>
+                <li><strong>Adaptability:</strong> Flexibility, learning agility, embracing change, handling pressure.</li>
+                <li><strong>Communication:</strong> Written and verbal communication, active listening, public speaking, presentation skills.</li>
+            </ul>
+            <button class="back-button">Back to Overview</button>
+        </section>
+
+        <section id="experience-detail" class="detail-section hidden">
+            <h2>My Job Experience</h2>
+            <div class="job-entry">
+                <h3>Internet Cafe Attendant</h3>
+                <p>June 2019 | Cavite, Philippines</p>
+                <ul>
+                    <li>Guiding customers on how to use the Pisonet machine.</li>
+                    <li>Answering simple queries and providing information about rates and available services.</li>
+                    <li>Troubleshooting minor issues, including restarting computers, checking network cables, and assisting with basic software glitches.</li>
+                    <li>Monitoring computer usage to ensure appropriate use and adherence to paid time.</li>
+                    <li>Enforcing cafe policies, such as prohibiting illegal activities, managing noise levels, and ensuring respect for other users.</li>
+                    <li>Performing basic cleaning to maintain tidy computer stations, tables, and the general cafe area.</li>
+                </ul>
+            </div>
+            <div class="job-entry">
+                <h3>Loading and Unloading Staff</h3>
+                <p>March 2020 | Rebisco Sahud-Ulan</p>
+                <ul>
+                    <li>Responsible for efficient loading and unloading of boxes.</li>
+                </ul>
+            </div>
+            <button class="back-button">Back to Overview</button>
+        </section>
+
+        <section id="projects-detail" class="detail-section hidden">
+            <h2>My Digital Art Projects</h2>
+
+            <div class="projects-grid">
+                <div class="project-container">
+                    <img src="MONTANO.jpg" alt="Vector Art of a man resting his face on his hand" class="project-image">
+                    <h3>Self-Portrait Vector Art</h3>
+                    <p class="project-description">A vector art self-portrait demonstrating digital illustration skills and attention to detail.</p>
+                </div>
+
+                <div class="project-container">
+                    <img src="Our lady of Guadalupe.jpg" alt="Vector art of Our Lady of Guadalupe" class="project-image">
+                    <h3>Our Lady of Guadalupe Vector Art</h3>
+                    <p class="project-description">A vibrant vector art depiction of Our Lady of Guadalupe, showcasing religious art style.</p>
+                </div>
+
+                <div class="project-container">
+                    <img src="Genebro.jpg" alt="Vector art of a priest holding a crucifix and rosary" class="project-image">
+                    <h3>Genesis with Crucifix Vector Art</h3>
+                    <p class="project-description">Digital artwork featuring Genesis holding a crucifix and rosary beads, with a focus on spiritual themes.</p>
+                </div>
+
+                <div class="project-container">
+                    <img src="14th.jpg" alt="Vector art celebrating 14th Sacerdotal Anniversary" class="project-image">
+                    <h3>14th Sacerdotal Anniversary Vector Art</h3>
+                    <p class="project-description">An illustration created to commemorate a 14th sacerdotal anniversary, featuring a priest with a chalice.</p>
+                </div>
+
+                <div class="project-container">
+                    <img src="Justine.jpg" alt="Vector art of a saint holding a staff and book" class="project-image">
+                    <h3>Justine Vector Art</h3>
+                    <p class="project-description">A vector art piece depicting Justine, holding a staff and a book, rendered in a traditional style.</p>
+                </div>
+
+                <div class="project-container">
+                    <img src="San Jose.jpg" alt="Vector art of San Jose" class="project-image">
+                    <h3>Saint Joseph Vector Art</h3>
+                    <p class="project-description">Digital illustration of Saint Joseph, featuring traditional iconography and vibrant colors.</p>
+                </div>
+            </div>
+            <button class="back-button">Back to Overview</button>
+        </section>
+    </main>
+
+    <div id="imageModal" class="modal-overlay">
+        <div class="modal-content-wrapper">
+            <span class="close-button">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Rodny A. Montano. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/16SGCKZqh1/" target="_blank" aria-label="Facebook Profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png" alt="Facebook" style="width: 30px; height: 30px; vertical-align: middle;">
+            </a>
+            <a href="https://www.instagram.com/9nyx__?igsh=MTcyc3h2YmR3Ymh1aw==" target="_blank" aria-label="Instagram Profile">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram" style="width: 30px; height: 30px; vertical-align: middle;">
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
